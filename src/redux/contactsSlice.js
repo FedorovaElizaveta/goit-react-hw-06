@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import baseContacts from "../data.json";
 
 const contactSlice = createSlice({
   name: "contacts",
-  initialState: { items: [] },
+  initialState: { items: [...baseContacts] },
+  // or
+  // initialState: { items: [] },
   reducers: {
     addContact: (state, { payload }) => {
-      state.items = [...state.items, payload];
+      state.items.push(payload);
     },
     deleteContact: (state, { payload }) => {
       state.items = state.items.filter((contact) => contact.id !== payload);
